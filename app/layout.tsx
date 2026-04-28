@@ -27,10 +27,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${oswald.variable} h-full antialiased`}
-   >
-      <NavBar />
-      <body className="min-h-full flex flex-col">{children}</body>
-      <Footer />
+    >
+      <body className="min-h-full flex flex-col">
+        <NavBar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
