@@ -10,11 +10,10 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="relative text-white bg-green-900">
+    <footer className=" text-white bg-green-900">
+      
       <div
-        className="absolute
-    top-0
-    left-0
+        className="
     w-full
     overflow-hidden"
       >
@@ -32,7 +31,7 @@ export default function Footer() {
           ></path>
         </svg>
 
-        <div className="relative  -top-10 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 p-20 gap-20 bg-green-900">
+        <div className="h-full grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 p-20 gap-20 bg-green-900">
           <div className="flex flex-col justify-center">
             <h2 className="text-3xl text-pink-500 uppercase"> Footer</h2>
             <p>
