@@ -51,7 +51,7 @@ export default function NavBar() {
   return (
     <nav
       id="navbar"
-      className={`w-full h-[8ch] backdrop-blur-sm flex items-center justify-between md:px-16 sm:px-10 px-4 fixed top-0 transition-all ease-in-out duration-300 z-50 border-b border-neutral-200 ${
+      className={`w-full h-[8ch] backdrop-blur-sm flex items-center justify-between md:px-16 sm:px-10 px-4 fixed top-0 transition-all ease-in-out duration-300 z-50 ${
         isScrolled ? "bg-sky-50/30 border-sky-200" : "bg-white"
       }`}
     >

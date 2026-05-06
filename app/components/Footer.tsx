@@ -10,30 +10,36 @@ import {
 
 export default function Footer() {
   return (
-    <footer className=" text-white bg-green-900">
+    <footer className=" text-white bg-[#001524]">
       
       <div
         className="
     w-full
     overflow-hidden"
       >
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-            className="relative
-    block
-    fill-[#b7b93d] z-100"
-          ></path>
-        </svg>
+       <svg
+  data-name="Layer 1"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1200 120"
+  preserveAspectRatio="none"
+>
+  from-[#c68d53] to-[#7f5a35]
+  <defs>
+    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="#c68d53" />
+      <stop offset="100%" stopColor="#7f5a35" />
+    </linearGradient>
+  </defs>
 
-        <div className="h-full grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 p-20 gap-20 bg-green-900">
+  <path
+    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+    fill="url(#waveGradient)"
+  />
+</svg>
+
+        <div className="h-full grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 p-20 gap-20 ">
           <div className="flex flex-col justify-center">
-            <h2 className="text-3xl text-pink-500 uppercase"> Footer</h2>
+            <h2 className="text-3xl text-[#bb9457] uppercase"> Footer</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi iste
               doloremque soluta voluptates. Deserunt, quas suscipit quibusdam
@@ -44,7 +50,7 @@ export default function Footer() {
 
           <div className="flex flex-col ">
             <ul>
-              <li className="text-[22px] list-none font-semibold text-pink-500 py-2 uppercase">
+              <li className="text-[22px] list-none font-semibold text-[#bb9457] py-2 uppercase">
                 {" "}
                 Creativity{" "}
               </li>
@@ -56,7 +62,7 @@ export default function Footer() {
 
           <div className="flex flex-col ">
             <ul>
-              <li className="text-[22px] list-none font-semibold text-pink-500 py-2 uppercase">
+              <li className="text-[22px] list-none font-semibold text-[#bb9457] py-2 uppercase">
                 {" "}
                 Creativity{" "}
               </li>
@@ -70,7 +76,7 @@ export default function Footer() {
 
           <div className="flex flex-col ">
             <ul>
-              <li className="text-[22px] list-none font-semibold text-pink-500 py-2 uppercase">
+              <li className="text-[22px] list-none font-semibold text-[#bb9457] py-2 uppercase">
                 {" "}
                 Contact{" "}
               </li>
@@ -105,6 +111,8 @@ export default function Footer() {
     </footer>
   );
 }
+
+
 
 
 // {footerSections.map(item => ( <h2 key={item.name} className='text-lg font-bold mb-4'>
