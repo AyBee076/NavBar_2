@@ -125,7 +125,7 @@ export default function NavBar() {
               <li
                 key={item.name}
                 onClick={closeNavBar}
-                className={`hover:text-sky-700 ease-in-out duration-200 ${
+                className={`hover:text-sky-700 text-sm lg:text-base ease-in-out duration-200 ${
                   pathname === item.href ? "text-sky-700" : "text-neutral-600"
                 } cursor-pointer`}
               >

@@ -46,7 +46,7 @@ export default function Home() {
           <h1 className="text-3xl font-bold mb-4">Shop with Us</h1>
           <p className="text-lg">
             Upgrade your wardrobe with our trendy and affordable outfits. <br />{" "}
-            Quality clothing, great prices and styles you'll love!{" "}
+            Quality clothing, great prices and styles you&apos;ll love!{" "}
           </p>
         </div>
 
@@ -84,7 +84,7 @@ export default function Home() {
       <section className="w-full gap-20 flex-col md:flex-row flex items-center justify-between px-15 py-12 mb-10">
         {/* Text on the left */}
         <div className="shrink-0">
-          <h1 className="text-3xl font-bold mb-4">Shop Men's Wear</h1>
+          <h1 className="text-3xl font-bold mb-4">Shop Men&apos;s Wear</h1>
           <span>
             Discover stylish, comfortable, and affordable men’s fashion for
             every occasion.
@@ -109,7 +109,7 @@ export default function Home() {
       {/* WOMEN CLOTHING */}
       <section className="mb-20">
         <div className="flex flex-col text-center mb-10">
-          <h1 className="text-3xl font-bold mb-4">Shop Women's Clothing</h1>
+          <h1 className="text-3xl font-bold mb-4">Shop Women&lsquo;s Clothing</h1>
           <p className="">
             Step into the world of modern women’s fashion. Our collection is
             carefully selected to bring you the latest trends, timeless styles,
