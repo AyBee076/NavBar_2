@@ -1,25 +1,39 @@
 import modelsData from "../data/models.json"
+import womenData from "../data/women.json"
+import accessoriesData from "../data/accessories.json"
 import type { Model, GetModelsParams } from "../types"
 
+const models = modelsData as unknown as Model[]
+const women = womenData as unknown as Model[]
+const accessories = accessoriesData as unknown as Model[]
+
 export async function getModels({ category }: GetModelsParams = {}): Promise<Model[]> {
-  // This is where you'd write code to fetch the list
-  // of models from a database. We're mocking that with
-  // our JSON array of data in models.json for now.
-  let filteredModels = [...modelsData]
+  let filteredModels = [...models]
   if (category) {
-    filteredModels = modelsData.filter(
-      (model: Model) => model.category === category
-    )
+    filteredModels = models.filter((model) => model.category === category)
+  }
+  return filteredModels
+}
+
+export async function getWomenData({ category }: GetModelsParams = {}): Promise<Model[]> {
+  let filteredModels = [...women]
+  if (category) {
+    filteredModels = women.filter((model) => model.category === category)
+  }
+  return filteredModels
+}
+
+export async function getAccessoriesData({ category }: GetModelsParams = {}): Promise<Model[]> {
+  let filteredModels = [...accessories]
+  if (category) {
+    filteredModels = accessories.filter((model) => model.category === category)
   }
   return filteredModels
 }
 
 export async function getModelById(id: string | number): Promise<Model> {
-  // These functions don't technically need to be async functions,
-  // but we're planning for the future when they'll be fetching
-  // from a real data source.
-  const foundModel = modelsData.find(
-    (model: Model) => model.id.toString() === id.toString()
+  const foundModel = models.find(
+    (model) => model.id.toString() === id.toString()
   )
   if (!foundModel) {
     throw new Error(`Model with id ${id} not found`)

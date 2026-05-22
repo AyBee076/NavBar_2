@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "name": "Articulated Dragon",
+        "description": "A detailed dragon model with movable joints and wings",
+        "likes": 1847,
+        "image": "/images/IMG_2583.jpg",
+        "category": "toys-games",
+        "dateAdded": "2023-03-15T14:30:00Z"
+    },
+    {
+        "id": 2,
+        "name": "Succulent Planter",
+        "description": "Geometric planter perfect for small succulents",
+        "likes": 456,
+        "image": "/images/IMG_2576.jpg",
+        "category": "household",
+        "dateAdded": "2023-06-22T09:15:00Z"
+    },
+    {
+        "id": 3,
+        "name": "Cosplay Helmet",
+        "description": "Sci-fi inspired helmet for costume making",
+        "likes": 1253,
+        "image": "/images/IMG_2578.jpg",
+        "category": "props-cosplay",
+        "dateAdded": "2023-09-05T16:45:00Z"
+    },
+    {
+        "id": 51,
+        "name": "Building Blocks",
+        "description": "Compatible construction toy set",
+        "likes": 1234,
+        "image": "/images/IMG_3940.jpg",
+        "category": "toys-games",
+        "dateAdded": "2023-01-15T14:45:00Z"
+    },
+    {
+        "id": 52,
+        "name": "Shelf System",
+        "description": "Customizable shelving solution",
+        "likes": 678,
+        "image": "/images/IMG_3635.jpg",
+        "category": "household",
+        "dateAdded": "2023-03-28T11:10:00Z"
+    }
+]

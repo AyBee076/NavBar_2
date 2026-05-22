@@ -1,6 +1,10 @@
+
+
 import React from "react";
 import type { ModelDetailPageProps } from "@/types/index";
 import { getModelById } from "@/lib/models";
+
+import ProductPage from "@/app/components/ProductPage";
 
 export default async function ModelDetailPage({
   params,
@@ -8,5 +12,7 @@ export default async function ModelDetailPage({
   const { id } = await params;
   const model = await getModelById(id);
   console.log(model);
-  return <h1> The id of this model is {model.name}</h1>;
+  return (
+      <ProductPage model={model}/>
+  );
 }

@@ -6,10 +6,15 @@ export type Model = {
   name: string
   description: string
   likes: number
-  image: string
+  images: string[]
   category: string
-  dateAdded: string
+  price: number
+  size: string[]
+  fit: string
+  fabric: string
+  stock: number
 }
+
 
 export type Category = {
     displayName: string

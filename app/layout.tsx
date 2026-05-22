@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Oswald } from "next/font/google";
+import { Inter, Oswald, Geist } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,7 +29,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${oswald.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", inter.variable, oswald.variable, "font-sans", geist.variable)}
     >
       <body className="min-h-full flex flex-col">
         <NavBar />

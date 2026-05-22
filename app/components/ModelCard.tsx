@@ -1,11 +1,10 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import { HeartIcon } from "@phosphor-icons/react";
-import Pill from "./Pill";
+import { Button } from "@/components/ui/button";
 import { ModelCardProps } from "@/types";
 import Image from "next/image";
-
 
 export default function ModelCard({ model }: ModelCardProps) {
   return (
@@ -20,27 +19,28 @@ export default function ModelCard({ model }: ModelCardProps) {
       >
         <div className="relative aspect-square">
           <Image
-            src={model.image}
+            src={model.images[0]}
             alt={model.name}
-           fill
-    className="object-cover"
+            fill
+            className="object-cover"
           />
         </div>
         <div className="p-4">
-          <div className="flex justify-between mb-2 min-h-[3.5rem]">
+          <div className="flex flex-col justify-between mb-2 min-h-[3.5rem]">
+            <span id={`model-${model.id}-title`} className="text-sm">
+              {model.category}
+            </span>
             <h2
               id={`model-${model.id}-title`}
-              className="text-xl font-semibold text-gray-800 line-clamp-2"
+              className="text-base font-semibold text-gray-800 line-clamp-2"
             >
               {model.name}
             </h2>
-          </div>
-          <p className="text-gray-800 text-sm line-clamp-2 min-h-[2.5rem] leading-[1.25rem]">
-            {model.description}
+            <p className="text-gray-800 text-sm line-clamp-2 min-h-[2rem] leading-[1.25rem]">
+            {`GH₵ ${model.price}`}
           </p>
-          <div className="mt-2">
-            <Pill>{model.category}</Pill>
           </div>
+          
           <div
             className="flex items-center mt-2 text-gray-600"
             aria-label={`${model.likes} likes`}
@@ -50,6 +50,11 @@ export default function ModelCard({ model }: ModelCardProps) {
               aria-hidden="true"
             />
             <span>{model.likes}</span>
+          </div>
+          <div className="mt-2">
+            {model.size.map((item) => (
+              <Button variant="outline" className="bg-gray-300 " key={item}>{item}</Button>
+            ))}
           </div>
         </div>
       </div>

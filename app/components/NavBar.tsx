@@ -14,7 +14,11 @@ export default function NavBar() {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  const toggleNavbar = () => setOpen((prev) => !prev);
+  const toggleNavbar = () => {
+  console.log("clicked, open:", !open);
+  setOpen((prev) => !prev);
+};
+
   const closeNavBar = () => setOpen(false);
 
   // -- Escape key to close --
@@ -51,7 +55,7 @@ export default function NavBar() {
   return (
     <nav
       id="navbar"
-      className={`w-full h-[8ch] backdrop-blur-sm flex items-center justify-between md:px-16 sm:px-10 px-4 fixed top-0 transition-all ease-in-out duration-300 z-50 ${
+      className={`w-full h-[8ch] backdrop-blur-sm flex items-center justify-between lg:px-12 px-4 fixed top-0 transition-all ease-in-out duration-300 z-50 ${
         isScrolled ? "bg-sky-50/30 border-sky-200" : "bg-white"
       }`}
     >
@@ -125,7 +129,7 @@ export default function NavBar() {
               <li
                 key={item.name}
                 onClick={closeNavBar}
-                className={`hover:text-sky-700 text-sm lg:text-base ease-in-out duration-200 ${
+                className={`hover:text-sky-700 text-sm lg:text-base md:text-nowrap ease-in-out duration-200 ${
                   pathname === item.href ? "text-sky-700" : "text-neutral-600"
                 } cursor-pointer`}
               >
@@ -135,11 +139,11 @@ export default function NavBar() {
           </ul>
 
           {/* Buttons */}
-          <div className="flex flex-col md:flex-row items-center gap-4">
-            <button className="w-fit px-6 py-2 md:text-sky-700 ease-in-out duration-300 cursor-pointer">
+          <div className="flex flex-col md:flex-row items-center p-4 gap-2">
+            <button className="w-fit md:text-nowrap px-6 py-2 md:text-sky-700 ease-in-out duration-300 cursor-pointer shrink-2">
               Sign In
             </button>
-            <button className="w-fit px-6 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700 md:text-base text-2xl text-neutral-50 ease-in-out duration-300 cursor-pointer">
+            <button className="w-fit md:text-nowrap px-6 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700  text-neutral-50 ease-in-out duration-300 cursor-pointer shrink-2">
               Sign Up
             </button>
           </div>
