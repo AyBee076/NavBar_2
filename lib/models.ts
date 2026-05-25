@@ -40,3 +40,23 @@ export async function getModelById(id: string | number): Promise<Model> {
   }
   return foundModel
 }
+
+export async function getWomenDataById(id: string | number): Promise<Model> {
+  const foundModel = women.find(
+    (model) => model.id.toString() === id.toString()
+  )
+  if (!foundModel) {
+    throw new Error(`Model with id ${id} not found`)
+  }
+  return foundModel
+}
+
+export async function getAccessoriesDataId(id: string | number): Promise<Model> {
+  const foundModel = models.find(
+    (model) => model.id.toString() === id.toString()
+  )
+  if (!foundModel) {
+    throw new Error(`Model with id ${id} not found`)
+  }
+  return foundModel
+}

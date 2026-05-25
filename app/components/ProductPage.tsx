@@ -22,7 +22,15 @@ export default function ProductPage({ model }: ModelCardProps) {
       <div className="flex gap-5">
         {/* IMAGE */}
         <div className="w-1/2 px-5">
-          <Carousel className="w-full">
+          <Carousel
+            className="w-full"
+            opts={{
+              align: "start",
+              loop: true,
+              skipSnaps: false,
+              duration: 25,
+            }}
+          >
             <CarouselContent>
               {model.images.map((image, index) => (
                 <CarouselItem key={index}>
@@ -39,7 +47,7 @@ export default function ProductPage({ model }: ModelCardProps) {
             </CarouselContent>
             <CarouselPrevious />
             <CarouselNext />
-          </Carousel>
+          </Carousel>{" "}
         </div>
 
         {/* DETAILS */}

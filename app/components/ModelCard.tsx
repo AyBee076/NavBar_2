@@ -9,7 +9,7 @@ import Image from "next/image";
 export default function ModelCard({ model }: ModelCardProps) {
   return (
     <Link
-      href={`/men/${model.id}`}
+      href={`/women/${model.id}`}
       className="block group hover:shadow-[0_5px_12px_rgba(0,0,0,0.1)] hover:-translate-y-[3px] transition-all"
       aria-labelledby={`model-${model.id}-title`}
     >
