@@ -13,8 +13,22 @@ export type Model = {
   fit: string
   fabric: string
   stock: number
+  color: string
 }
 
+
+export type PriceRange = "All" | "Under $10" | "$10 - $20" | "$20 - $40" | "Over $40"
+
+export type FilterState = {
+  category: string
+  price: PriceRange
+  colors: string[]
+}
+
+// @/types/index.ts
+export type SidebarProps = {
+  onFilter?: (filters: FilterState) => void
+}
 
 export type Category = {
     displayName: string
@@ -54,12 +68,14 @@ export type ModelDetailPageProps = {
 
 // Components Types
 export type ModelCardProps = {
-    model: Model
+  model: Model
+  section?: string
 }
 
 export type ModelsGridProps = {
-    title: string
-    models: Model[]
+  title: string
+  models: Model[]
+  section?: string
 }
 
 export type PillProps = {

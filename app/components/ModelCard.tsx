@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { ModelCardProps } from "@/types";
 import Image from "next/image";
 
-export default function ModelCard({ model }: ModelCardProps) {
+export default function ModelCard({ model, section = "men" }: ModelCardProps) {
   return (
     <Link
-      href={`/women/${model.id}`}
+      href={`/${section}/${model.id}`}
       className="block group hover:shadow-[0_5px_12px_rgba(0,0,0,0.1)] hover:-translate-y-[3px] transition-all"
       aria-labelledby={`model-${model.id}-title`}
     >
@@ -37,23 +37,16 @@ export default function ModelCard({ model }: ModelCardProps) {
               {model.name}
             </h2>
             <p className="text-gray-800 text-sm line-clamp-2 min-h-[2rem] leading-[1.25rem]">
-            {`GH₵ ${model.price}`}
-          </p>
+              {`GH₵ ${model.price}`}
+            </p>
           </div>
-          
-          <div
-            className="flex items-center mt-2 text-gray-600"
-            aria-label={`${model.likes} likes`}
-          >
-            <HeartIcon
-              className="w-5 h-5 mr-1 text-gray-400"
-              aria-hidden="true"
-            />
+          <div className="flex items-center mt-2 text-gray-600" aria-label={`${model.likes} likes`}>
+            <HeartIcon className="w-5 h-5 mr-1 text-gray-400" aria-hidden="true" />
             <span>{model.likes}</span>
           </div>
           <div className="mt-2">
             {model.size.map((item) => (
-              <Button variant="outline" className="bg-gray-300 " key={item}>{item}</Button>
+              <Button variant="outline" className="bg-gray-300" key={item}>{item}</Button>
             ))}
           </div>
         </div>

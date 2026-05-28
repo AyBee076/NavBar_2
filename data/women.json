@@ -9,12 +9,13 @@
       "/images/women_pics/IMG_5305.jpg",
       "/images/women_pics/IMG_5302.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Shorts",
     "price": 9.99,
     "size": ["XS", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 35
+    "stock": 35,
+    "color": "Green"
   },
   {
     "id": 2,
@@ -27,12 +28,13 @@
       "/images/women_pics/IMG_5311.jpg",
       "/images/women_pics/IMG_53007.jpg"
     ],
-    "category": "Button Shirt",
+    "category": "Trousers",
     "price": 5.49,
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 12
+    "stock": 12,
+    "color": "Cream"
   },
   {
     "id": 3,
@@ -43,12 +45,13 @@
       "/images/women_pics/IMG_5322.jpg",
       "/images/women_pics/IMG_5321.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Trousers",
     "price": 5.89,
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 25
+    "stock": 25,
+    "color": "Green"
   },
   {
     "id": 4,
@@ -60,12 +63,13 @@
       "/images/women_pics/IMG_5324.jpg",
       "/images/women_pics/IMG_5331.jpg"
     ],
-    "category": "Button Shirt",
+    "category": "Shorts",
     "price": 8.99,
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 15
+    "stock": 15,
+    "color": "Cream"
   },
   {
     "id": 5,
@@ -76,12 +80,13 @@
       "/images/women_pics/IMG_5338.jpg",
       "/images/women_pics/IMG_5335.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Trousers",
     "price": 2.99,
     "size": ["XS", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 6
+    "stock": 6,
+    "color": "Green"
   },
   {
     "id": 6,
@@ -92,12 +97,13 @@
       "/images/women_pics/IMG_5341.jpg",
       "/images/women_pics/IMG_5345.jpg"
     ],
-    "category": "Button Shirt",
+    "category": "Shorts",
     "price": 3.99,
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 2
+    "stock": 2,
+    "color": "Yellow"
   },
   {
     "id": 7,
@@ -108,12 +114,13 @@
       "/images/women_pics/IMG_5351.jpg",
       "/images/women_pics/IMG_5352.jpg"
     ],
-    "category": "Button Shirt",
+    "category": "Trousers",
     "price": 7.99,
     "size": ["2XL", "M", "S"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 10
+    "stock": 10,
+    "color": "Blue"
   },
   {
     "id": 8,
@@ -125,12 +132,13 @@
       "/images/women_pics/IMG_5358.jpg",
       "/images/women_pics/IMG_5359.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Shorts",
     "price": 39.99,
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 0
+    "stock": 0,
+    "color": "Red"
   },
   {
     "id": 9,
@@ -141,12 +149,13 @@
       "/images/women_pics/IMG_5364.jpg",
       "/images/women_pics/IMG_5368.jpg"
     ],
-    "category": "Button Shirt",
+    "category": "Trousers",
     "price": 49.99,
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 2
+    "stock": 2,
+    "color": "Red"
   },
   {
     "id": 10,
@@ -157,12 +166,13 @@
       "/images/women_pics/IMG_5372.jpg",
       "/images/women_pics/IMG_5373.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Shorts",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Yellow"
   },
   {
     "id": 11,
@@ -173,12 +183,13 @@
       "/images/women_pics/IMG_5379.jpg",
       "/images/women_pics/IMG_5380.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Trousers",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Orange"
   },
   {
     "id": 12,
@@ -189,12 +200,13 @@
       "/images/women_pics/IMG_5384.jpg",
       "/images/women_pics/IMG_5388.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Shorts",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Green"
   },
   {
     "id": 13,
@@ -205,12 +217,13 @@
       "/images/women_pics/IMG_5391.jpg",
       "/images/women_pics/IMG_5392.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Trousers",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Blue"
   },
   {
     "id": 14,
@@ -221,12 +234,13 @@
       "/images/women_pics/IMG_5396.jpg",
       "/images/women_pics/IMG_5399.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Shorts",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Blue"
   },
   {
     "id": 15,
@@ -237,12 +251,13 @@
       "/images/women_pics/IMG_5406.jpg",
       "/images/women_pics/IMG_5409.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Trousers",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Orange"
   },
   {
     "id": 16,
@@ -253,12 +268,13 @@
       "/images/women_pics/IMG_5411.jpg",
       "/images/women_pics/IMG_5414.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Shorts",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Purple"
   },
   {
     "id": 17,
@@ -269,12 +285,13 @@
       "/images/women_pics/IMG_5420.jpg",
       "/images/women_pics/IMG_5422.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Trousers",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Black"
   },
   {
     "id": 18,
@@ -285,12 +302,13 @@
       "/images/women_pics/IMG_5424.jpg",
       "/images/women_pics/IMG_5432.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Shorts",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Yellow"
   },
   {
     "id": 19,
@@ -301,12 +319,13 @@
       "/images/women_pics/IMG_5434.jpg",
       "/images/women_pics/IMG_5440.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Trousers",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Green"
   },
   {
     "id": 20,
@@ -317,12 +336,13 @@
       "/images/women_pics/IMG_5443.jpg",
       "/images/women_pics/IMG_5447.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Shorts",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Yellow"
   },
   {
     "id": 21,
@@ -333,11 +353,12 @@
       "/images/women_pics/IMG_5451.jpg",
       "/images/women_pics/IMG_5454.jpg"
     ],
-    "category": "Zipped Shirt",
+    "category": "Trousers",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Red"
   }
 ]

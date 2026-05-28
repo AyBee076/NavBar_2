@@ -18,7 +18,9 @@
     "size": ["XS", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 35
+    "stock": 35,
+    "color": "Red"
+    
   },
   {
     "id": 2,
@@ -36,7 +38,8 @@
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 12
+    "stock": 12,
+    "color": "Red"
   },
   {
     "id": 3,
@@ -54,7 +57,8 @@
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 25
+    "stock": 25,
+    "color": "Black"
   },
   {
     "id": 4,
@@ -72,7 +76,8 @@
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 15
+    "stock": 15,
+    "color": "Yellow"
   },
   {
     "id": 5,
@@ -90,7 +95,8 @@
     "size": ["XS", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 6
+    "stock": 6,
+    "color": "Red"
   },
   {
     "id": 6,
@@ -108,7 +114,8 @@
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 2
+    "stock": 2,
+    "color": "Green"
   },
   {
     "id": 7,
@@ -126,7 +133,8 @@
     "size": ["2XL", "M", "S"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 10
+    "stock": 10,
+    "color": "Blue"
   },
   {
     "id": 8,
@@ -146,7 +154,8 @@
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 0
+    "stock": 0,
+    "color": "Yellow"
   },
   {
     "id": 9,
@@ -165,7 +174,8 @@
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 2
+    "stock": 2,
+    "color": "Green"
   },
   {
     "id": 10,
@@ -184,7 +194,8 @@
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Black"
   },
   {
     "id": 11,
@@ -203,7 +214,8 @@
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Cream"
   },
   {
     "id": 12,
@@ -223,7 +235,8 @@
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Blue"
   },
   {
     "id": 13,
@@ -243,7 +256,8 @@
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Green"
   },
   {
     "id": 14,
@@ -260,6 +274,7 @@
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
-    "stock": 7
+    "stock": 7,
+    "color": "Yellow"
   }
 ]
