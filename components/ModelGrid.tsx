@@ -1,8 +1,12 @@
 import React from "react";
-import ModelCard from "@/app/components/ModelCard";
+import ModelCard from "@/components/ModelCard";
 import { ModelsGridProps, Model } from "@/types";
 
-export default function ModelsGrid({ title, models, section = "men" }: ModelsGridProps) {
+export default function ModelsGrid({
+  title,
+  models,
+  section = "men",
+}: ModelsGridProps) {
   return (
     <div className="container px-4 py-8 mx-auto">
       <h1 className="mb-8 text-3xl font-bold">{title}</h1>

@@ -1,17 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import type { Category, PriceRange, FilterState, SidebarProps } from "@/types";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import type { Category, PriceRange } from "@/types";
 import {
   getAllCategories,
   getUniqueColors,
   getPriceRanges,
 } from "@/lib/categories";
 
-export default function Sidebar({ onFilter }: SidebarProps) {
+export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const section = pathname.startsWith("/women") ? "women" : "men";
   const priceRanges: PriceRange[] = getPriceRanges(section);
@@ -27,7 +28,7 @@ export default function Sidebar({ onFilter }: SidebarProps) {
 
   const handlePrice = (range: PriceRange) => {
     setPrice(range);
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(searchParams.toString());
     if (range === "All") params.delete("price");
     else params.set("price", range);
     router.push(`${pathname}?${params.toString()}`);
@@ -38,7 +39,7 @@ export default function Sidebar({ onFilter }: SidebarProps) {
       ? selectedColors.filter((c) => c !== color)
       : [...selectedColors, color];
     setSelectedColors(updated);
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(searchParams.toString());
     if (updated.length === 0) params.delete("colors");
     else params.set("colors", updated.join(","));
     router.push(`${pathname}?${params.toString()}`);
@@ -46,56 +47,10 @@ export default function Sidebar({ onFilter }: SidebarProps) {
 
   return (
     <aside className="w-52 shrink-0 border-r pr-6 flex flex-col gap-6 p-4">
-      {/* Category */}
-      <div>
-        <h3 className="font-medium mb-3">Category</h3>
-        <ul className="flex flex-col gap-1">
-          <li>
-            <label className="flex items-center gap-2 py-1 cursor-pointer text-sm">
-              <input
-                type="radio"
-                name="category"
-                checked={pathname === `/${section}`}
-                onChange={() => handleCategory(`/${section}`)}
-              />
-              <span
-                className={
-                  pathname === `/${section}` ? "text-sky-700 font-medium" : ""
-                }
-              >
-                All
-              </span>
-            </label>
-          </li>
-          {categories.map((item: Category) => (
-            <li key={item.slug}>
-              <label className="flex items-center gap-2 py-1 cursor-pointer text-sm">
-                <input
-                  type="radio"
-                  name="category"
-                  checked={pathname === `/${section}/categories/${item.slug}`}
-                  onChange={() =>
-                    handleCategory(`/${section}/categories/${item.slug}`)
-                  }
-                />
-                <span
-                  className={
-                    pathname === `/${section}/categories/${item.slug}`
-                      ? "text-sky-700 font-medium"
-                      : ""
-                  }
-                >
-                  {item.displayName}
-                </span>
-              </label>
-            </li>
-          ))}
-        </ul>
-      </div>
 
       {/* Price */}
       <div>
-        <h3 className="font-medium mb-3">Price</h3>
+        <h3 className="font-medium mb-3 mt-20">Price</h3>
         {priceRanges.map((range) => (
           <label
             key={range}

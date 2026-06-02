@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { BookOpen, Menu, X } from "lucide-react";
+import { useCart } from "@/context/CartContext";
+import { ShoppingCartIcon } from "@phosphor-icons/react";
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
@@ -15,9 +17,9 @@ export default function NavBar() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const toggleNavbar = () => {
-  console.log("clicked, open:", !open);
-  setOpen((prev) => !prev);
-};
+    console.log("clicked, open:", !open);
+    setOpen((prev) => !prev);
+  };
 
   const closeNavBar = () => setOpen(false);
 
@@ -33,7 +35,9 @@ export default function NavBar() {
   // -- Body scroll lock --
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   // -- Move focus into drawer when it opens, return it when it closes --
@@ -52,6 +56,8 @@ export default function NavBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const { totalItems } = useCart();
+
   return (
     <nav
       id="navbar"
@@ -61,7 +67,10 @@ export default function NavBar() {
     >
       {/* Logo */}
       <div className="flex items-center gap-2 md:pr-16 pr-0">
-        <Link href="/" className="text-lg font-semibold text-sky-700 flex items-center gap-x-2">
+        <Link
+          href="/"
+          className="text-lg font-semibold text-sky-700 flex items-center gap-x-2"
+        >
           <BookOpen size={24} />
           <span>Learnhub</span>
         </Link>
@@ -102,7 +111,10 @@ export default function NavBar() {
       >
         {/* Logo + close button inside drawer */}
         <div className="w-full md:hidden flex items-center justify-between px-4">
-          <Link href="/" className="text-lg font-semibold text-sky-700 flex items-center gap-x-2">
+          <Link
+            href="/"
+            className="text-lg font-semibold text-sky-700 flex items-center gap-x-2"
+          >
             <BookOpen size={24} />
             <span>Learnhub</span>
           </Link>
@@ -143,9 +155,16 @@ export default function NavBar() {
             <button className="w-fit md:text-nowrap px-6 py-2 md:text-sky-700 ease-in-out duration-300 cursor-pointer shrink-2">
               Sign In
             </button>
-            <button className="w-fit md:text-nowrap px-6 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700  text-neutral-50 ease-in-out duration-300 cursor-pointer shrink-2">
-              Sign Up
-            </button>
+            <div className="relative">
+              <Link href="/cart">
+              <ShoppingCartIcon size={24} className="cursor-pointer" />
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-sky-600 text-white text-xs font-semibold w-5 h-5 rounded-full flex items-center justify-center">
+                  {totalItems > 99 ? "99+" : totalItems}
+                </span>
+              )}
+              </Link>
+            </div>
           </div>
         </div>
       </div>

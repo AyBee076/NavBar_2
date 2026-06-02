@@ -1,20 +1,20 @@
-import ModelsGrid from "../components/ModelGrid";
+import ModelsGrid from "../../components/ModelGrid";
 import { getAccessoriesData } from "@/lib/models";
 import { ModelsPageProps } from "@/types";
-import Form from "next/form"
+import Form from "next/form";
 
-export default async function page({ searchParams }: ModelsPageProps){
+export default async function page({ searchParams }: ModelsPageProps) {
   const query = (await searchParams)?.query?.toLowerCase() || "";
 
   const models = await getAccessoriesData();
-  
+
   const filteredModels = query
     ? models.filter((obj) => obj.name.toLowerCase().includes(query)) ||
       models.filter((obj) => obj.description.toLowerCase().includes(query))
     : models;
   return (
-     <>
-      <Form action="/men"  className="w-full px-5 md:px-0 md:max-w-xl">
+    <>
+      <Form action="/men" className="w-full px-5 md:px-0 md:max-w-xl">
         <input
           type="text"
           name="query"
@@ -26,5 +26,5 @@ export default async function page({ searchParams }: ModelsPageProps){
       </Form>
       <ModelsGrid title="Accerories" models={filteredModels} />
     </>
-  )
+  );
 }

@@ -1,6 +1,6 @@
 import ModelsGrid from "@/components/ModelGrid";
 import { getCategoryBySlug } from "@/lib/categories";
-import { getWomenData } from "@/lib/models";
+import { getModels } from "@/lib/models";
 import type { CategoryPageProps } from "@/types";
 
 type SearchParams = {
@@ -16,7 +16,7 @@ export default async function CategoryPage({
   const { price, colors } = await searchParams;
 
   const category = getCategoryBySlug(categoryName);
-  const allModels = await getWomenData({ category: category.displayName });
+  const allModels = await getModels({ category: category.displayName });
 
   const filtered = allModels.filter((model) => {
     if (price && price !== "All") {

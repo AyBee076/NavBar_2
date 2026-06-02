@@ -1,10 +1,8 @@
-
-
 import React from "react";
 import type { ModelDetailPageProps } from "@/types/index";
 import { getWomenDataById } from "@/lib/models";
 
-import ProductPage from "@/app/components/ProductPage";
+import ProductPage from "@/components/ProductPage";
 
 export default async function ModelDetailPage({
   params,
@@ -12,7 +10,5 @@ export default async function ModelDetailPage({
   const { id } = await params;
   const model = await getWomenDataById(id);
   console.log(model);
-  return (
-      <ProductPage model={model}/>
-  );
+  return <ProductPage model={model} />;
 }
