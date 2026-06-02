@@ -18,6 +18,7 @@ export default function ProductPage({ model }: ModelCardProps) {
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
+  const outOfStock = model.stock < 1;
 
   const toggleSize = (size: string) => {
     setSelectedSizes((prev) =>
@@ -95,6 +96,7 @@ export default function ProductPage({ model }: ModelCardProps) {
                   variant="outline"
                   key={item}
                   onClick={() => toggleSize(item)}
+                  disabled={outOfStock}
                   className={
                     selectedSizes.includes(item)
                       ? "bg-sky-600 text-white border-sky-600"

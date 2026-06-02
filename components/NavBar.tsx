@@ -155,7 +155,7 @@ export default function NavBar() {
             <button className="w-fit md:text-nowrap px-6 py-2 md:text-sky-700 ease-in-out duration-300 cursor-pointer shrink-2">
               Sign In
             </button>
-            <div className="relative">
+            <div className="relative" onClick={closeNavBar} >
               <Link href="/cart">
               <ShoppingCartIcon size={24} className="cursor-pointer" />
               {totalItems > 0 && (

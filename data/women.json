@@ -45,7 +45,7 @@
       "/images/women_pics/IMG_5322.jpg",
       "/images/women_pics/IMG_5321.jpg"
     ],
-    "category": "Trousers",
+    "category": "Shorts",
     "price": 5.89,
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
@@ -63,7 +63,7 @@
       "/images/women_pics/IMG_5324.jpg",
       "/images/women_pics/IMG_5331.jpg"
     ],
-    "category": "Shorts",
+    "category": "Trousers",
     "price": 8.99,
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
@@ -149,13 +149,13 @@
       "/images/women_pics/IMG_5364.jpg",
       "/images/women_pics/IMG_5368.jpg"
     ],
-    "category": "Trousers",
+    "category": "Shorts",
     "price": 49.99,
     "size": ["S", "M", "L", "XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
     "stock": 2,
-    "color": "Red"
+    "color": "Black"
   },
   {
     "id": 10,
@@ -172,7 +172,7 @@
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
     "stock": 7,
-    "color": "Yellow"
+    "color": "Purple"
   },
   {
     "id": 11,
@@ -217,7 +217,7 @@
       "/images/women_pics/IMG_5391.jpg",
       "/images/women_pics/IMG_5392.jpg"
     ],
-    "category": "Trousers",
+    "category": "Shorts",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
@@ -234,7 +234,7 @@
       "/images/women_pics/IMG_5396.jpg",
       "/images/women_pics/IMG_5399.jpg"
     ],
-    "category": "Shorts",
+    "category": "Trousers",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
@@ -268,7 +268,7 @@
       "/images/women_pics/IMG_5411.jpg",
       "/images/women_pics/IMG_5414.jpg"
     ],
-    "category": "Shorts",
+    "category": "Trousers",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
@@ -308,7 +308,7 @@
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
     "stock": 7,
-    "color": "Yellow"
+    "color": "Red"
   },
   {
     "id": 19,
@@ -319,13 +319,13 @@
       "/images/women_pics/IMG_5434.jpg",
       "/images/women_pics/IMG_5440.jpg"
     ],
-    "category": "Trousers",
+    "category": "Shorts",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
     "stock": 7,
-    "color": "Green"
+    "color": "Blue"
   },
   {
     "id": 20,
@@ -342,7 +342,7 @@
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
     "stock": 7,
-    "color": "Yellow"
+    "color": "Red"
   },
   {
     "id": 21,
@@ -353,12 +353,12 @@
       "/images/women_pics/IMG_5451.jpg",
       "/images/women_pics/IMG_5454.jpg"
     ],
-    "category": "Trousers",
+    "category": "Shorts",
     "price": 4.99,
     "size": ["S", "M", "L", "3XL"],
     "fit": "Regular fit. Model is 6'1\" and wearing size M. Relaxed through the chest and shoulders.",
     "fabric": "100% Cotton. Machine wash cold. Tumble dry low. Do not bleach.",
     "stock": 7,
-    "color": "Red"
+    "color": "Purple"
   }
 ]
