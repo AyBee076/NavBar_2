@@ -13,7 +13,7 @@ export default function ModelsLayout({
         <Sidebar />
       </Suspense>
 
-      <main className="flex-1 p-4 md:ml-14 mt-[8ch] ">
+      <main className="flex-1 p-4 md:ml-14 md:mt-[8ch] ">
         <SubNavigation />
         <Suspense fallback={null}>
           <SearchBar />
