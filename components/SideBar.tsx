@@ -2,27 +2,12 @@
 
 import { useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import type { PriceRange } from "@/types";
-import { getUniqueColors, getPriceRanges } from "@/lib/categories";
+import type { Category, PriceRange } from "@/types";
 import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "./ui/button";
+  getAllCategories,
+  getUniqueColors,
+  getPriceRanges,
+} from "@/lib/categories";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -31,10 +16,15 @@ export default function Sidebar() {
 
   const section = pathname.startsWith("/women") ? "women" : "men";
   const priceRanges: PriceRange[] = getPriceRanges(section);
+  const categories: Category[] = getAllCategories(section);
   const colors: string[] = getUniqueColors(section);
 
   const [price, setPrice] = useState<PriceRange>("All");
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
+
+  const handleCategory = (href: string) => {
+    router.push(href);
+  };
 
   const handlePrice = (range: PriceRange) => {
     setPrice(range);
@@ -56,9 +46,10 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-52 shrink-0 md:border-r pr-6 flex md:flex-col  gap-6 p-4 pt-[8ch]">
+    <aside className="w-52 shrink-0 border-r pr-6 flex flex-col gap-6 p-4">
+
       {/* Price */}
-      <div className="hidden md:block">
+      <div>
         <h3 className="font-medium mb-3 mt-20">Price</h3>
         {priceRanges.map((range) => (
           <label
@@ -77,7 +68,7 @@ export default function Sidebar() {
       </div>
 
       {/* Colors */}
-      <div className="hidden md:block">
+      <div>
         <h3 className="font-medium mb-3">Colors</h3>
         {colors.map((color) => (
           <label
@@ -93,51 +84,6 @@ export default function Sidebar() {
           </label>
         ))}
       </div>
-
-      <div className="md:hidden">
-        <Select
-          value={price}
-          onValueChange={(val) => handlePrice(val as PriceRange)}
-        >
-          <SelectTrigger className="w-full max-w-48">
-            <SelectValue placeholder="Select price range" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Price</SelectLabel>
-              {priceRanges.map((range) => (
-                <SelectItem key={range} value={range}>
-                  {range}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
-
-      <div className="md:hidden">
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>
-      <Button variant="outline" className="w-full justify-between">
-        {selectedColors.length > 0 ? selectedColors.join(", ") : "Colors"}
-      </Button>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent>
-      <DropdownMenuGroup>
-        <DropdownMenuLabel>Colors</DropdownMenuLabel>
-        {colors.map((color) => (
-          <DropdownMenuCheckboxItem
-            key={color}
-            checked={selectedColors.includes(color)}
-            onCheckedChange={() => toggleColor(color)}
-          >
-            {color}
-          </DropdownMenuCheckboxItem>
-        ))}
-      </DropdownMenuGroup>
-    </DropdownMenuContent>
-  </DropdownMenu>
-</div>
     </aside>
   );
 }

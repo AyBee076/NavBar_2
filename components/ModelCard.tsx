@@ -43,7 +43,7 @@ export default function ModelCard({ model, section = "men" }: ModelCardProps) {
       className={`block group transition-all ${
         outOfStock
           ? "opacity-90 cursor-not-allowed"
-          : "hover:shadow-[0_5px_12px_rgba(0,0,0,0.1)] hover:-translate-y-0.75"
+          : "hover:shadow-[0_5px_12px_rgba(0,0,0,0.1)] hover:-translate-y-[3px]"
       }`}
       aria-labelledby={`model-${model.id}-title`}
     >
@@ -63,7 +63,7 @@ export default function ModelCard({ model, section = "men" }: ModelCardProps) {
           </Link>
         </div>
         <div className="p-4">
-          <div className="flex flex-col justify-between mb-2 min-h-14">
+          <div className="flex flex-col justify-between mb-2 min-h-[3.5rem]">
             <span id={`model-${model.id}-title`} className="text-sm">
               {model.category}
             </span>
@@ -73,7 +73,7 @@ export default function ModelCard({ model, section = "men" }: ModelCardProps) {
             >
               {model.name}
             </h2>
-            <p className="text-gray-800 text-sm line-clamp-2 min-h-8 leading-5">
+            <p className="text-gray-800 text-sm line-clamp-2 min-h-[2rem] leading-[1.25rem]">
               {`GH₵ ${model.price}`}
             </p>
           </div>
