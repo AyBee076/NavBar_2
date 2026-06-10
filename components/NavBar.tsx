@@ -7,6 +7,10 @@ import Link from "next/link";
 import { BookOpen, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { ShoppingCartIcon } from "@phosphor-icons/react";
+import { UserIcon } from '@phosphor-icons/react'
+import { useUser } from '@/lib/useUser'
+import { signOut } from '@/lib/auth'
+import { Button } from "./ui/button";
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
@@ -15,6 +19,8 @@ export default function NavBar() {
 
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  const { user, loading } = useUser()
 
   const toggleNavbar = () => {
     console.log("clicked, open:", !open);
@@ -152,20 +158,41 @@ export default function NavBar() {
 
           {/* Buttons */}
           <div className="flex flex-col md:flex-row items-center p-4 gap-2">
-            <button className="w-fit md:text-nowrap px-6 py-2 md:text-sky-700 ease-in-out duration-300 cursor-pointer shrink-2">
-              Sign In
-            </button>
-            <div className="relative" onClick={closeNavBar} >
-              <Link href="/cart">
-              <ShoppingCartIcon size={24} className="cursor-pointer" />
-              {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-sky-600 text-white text-xs font-semibold w-5 h-5 rounded-full flex items-center justify-center">
-                  {totalItems > 99 ? "99+" : totalItems}
-                </span>
-              )}
-              </Link>
-            </div>
-          </div>
+  {!loading && (
+    user ? (
+      <div className="flex items-center gap-3">
+        <button className="bg-white px-4"> <UserIcon size={28} weight="duotone" className="text-sky-700 cursor-pointer " /> </button>
+        
+        <button
+          onClick={() => signOut()}
+          className="w-fit px-6 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700 text-neutral-50 ease-in-out duration-300 cursor-pointer whitespace-nowrap"
+        >
+          Sign Out
+        </button>
+      </div>
+    ) : (
+      <Link href="/email-password">
+        <button className="w-fit md:text-nowrap px-6 py-2 md:text-sky-700 ease-in-out duration-300 cursor-pointer shrink-2">
+          Sign In
+        </button>
+      </Link>
+    )
+  )}
+
+  {/* Cart icon stays always visible */}
+  <div className="relative" onClick={closeNavBar}>
+    <Link href="/cart">
+      <button className="bg-white px-4">
+      <ShoppingCartIcon size={24} className="cursor-pointer" />
+      {totalItems > 0 && (
+        <span className="absolute -top-2 -right-2 bg-sky-600 text-white text-xs font-semibold w-5 h-5 rounded-full flex items-center justify-center">
+          {totalItems > 99 ? "99+" : totalItems}
+        </span>
+      )}
+      </button>
+    </Link>
+  </div>
+</div>
         </div>
       </div>
     </nav>
