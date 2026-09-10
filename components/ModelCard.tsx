@@ -7,6 +7,9 @@ import { ModelCardProps } from "@/types";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
+import { motion, easeOut } from "framer-motion";
+
+const MotionButton = motion(Button);
 
 export default function ModelCard({ model, section = "men" }: ModelCardProps) {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
@@ -39,11 +42,16 @@ export default function ModelCard({ model, section = "men" }: ModelCardProps) {
   };
 
   return (
-    <div
-      className={`block group transition-all ${
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ amount: 0.2, once: true }}
+      transition={{ duration: 0.5, ease: easeOut }}
+      whileHover={outOfStock ? undefined : { y: -4 }}
+      className={`block group transition-shadow ${
         outOfStock
           ? "opacity-90 cursor-not-allowed"
-          : "hover:shadow-[0_5px_12px_rgba(0,0,0,0.1)] hover:-translate-y-[3px]"
+          : "hover:shadow-[0_5px_12px_rgba(0,0,0,0.1)]"
       }`}
       aria-labelledby={`model-${model.id}-title`}
     >
@@ -51,15 +59,21 @@ export default function ModelCard({ model, section = "men" }: ModelCardProps) {
         className="overflow-hidden transition-shadow bg-white rounded-lg shadow-md hover:shadow-lg"
         role="article"
       >
-        <div className="relative aspect-square">
+        <div className="relative aspect-square overflow-hidden">
           <Link href={`/${section}/${model.id}`}>
-            <Image
-              src={model.images[0]}
-              alt={model.name}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className={`object-cover ${outOfStock ? "grayscale" : ""}`}
-            />
+            <motion.div
+              whileHover={outOfStock ? undefined : { scale: 1.06 }}
+              transition={{ duration: 0.4, ease: easeOut }}
+              className="relative w-full h-full"
+            >
+              <Image
+                src={model.images[0]}
+                alt={model.name}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className={`object-cover ${outOfStock ? "grayscale" : ""}`}
+              />
+            </motion.div>
           </Link>
         </div>
         <div className="p-4">
@@ -97,12 +111,17 @@ export default function ModelCard({ model, section = "men" }: ModelCardProps) {
             <span>{model.likes}</span>
           </div>
 
-          <div className="mt-2">
+          <div className="mt-2 flex flex-wrap gap-2">
             {model.size.map((item) => (
-              <Button
+              <MotionButton
                 variant="outline"
                 key={item}
-                onClick={(e) => toggleSize(e, item)}
+                whileTap={outOfStock ? undefined : { scale: 0.9 }}
+                animate={
+                  selectedSizes.includes(item) ? { scale: 1.05 } : { scale: 1 }
+                }
+                transition={{ duration: 0.15, ease: easeOut }}
+                onClick={(e: React.MouseEvent) => toggleSize(e, item)}
                 disabled={outOfStock}
                 className={
                   selectedSizes.includes(item)
@@ -111,21 +130,24 @@ export default function ModelCard({ model, section = "men" }: ModelCardProps) {
                 }
               >
                 {item}
-              </Button>
+              </MotionButton>
             ))}
           </div>
 
           <div className="mt-5">
-            <Button
+            <MotionButton
               className="w-full"
+              whileHover={outOfStock ? undefined : { scale: 1.02 }}
+              whileTap={outOfStock ? undefined : { scale: 0.96 }}
+              transition={{ duration: 0.15, ease: easeOut }}
               onClick={handleAddToCart}
               disabled={outOfStock}
             >
               Add to Cart <ShoppingCartIcon size={32} />
-            </Button>
+            </MotionButton>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

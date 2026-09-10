@@ -1,4 +1,3 @@
-import React from "react";
 import type { ModelDetailPageProps } from "@/types/index";
 import { getModelById } from "@/lib/models";
 

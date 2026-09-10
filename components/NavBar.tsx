@@ -4,30 +4,33 @@ import { navItems } from "@/lib/constants";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { BookOpen, Menu, X } from "lucide-react";
+import { ArrowUp, BookOpen, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { ShoppingCartIcon } from "@phosphor-icons/react";
-import { UserIcon } from '@phosphor-icons/react'
-import { useUser } from '@/lib/useUser'
-import { signOut } from '@/lib/auth'
-import { Button } from "./ui/button";
+import { UserIcon } from "@phosphor-icons/react";
+import { useUser } from "@/lib/useUser";
+import { signOut } from "@/lib/auth";
+import Logo from "@/public/images/resources/cabana_wear_logo.png";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const pathname = usePathname();
 
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  const { user, loading } = useUser()
+  const { user, loading } = useUser();
 
-  const toggleNavbar = () => {
-    console.log("clicked, open:", !open);
-    setOpen((prev) => !prev);
-  };
-
+  const toggleNavbar = () => setOpen((prev) => !prev);
   const closeNavBar = () => setOpen(false);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   // -- Escape key to close --
   useEffect(() => {
@@ -57,7 +60,10 @@ export default function NavBar() {
 
   // -- Scroll listener --
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 100);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+      setShowScrollTop(window.scrollY > 400);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -65,41 +71,100 @@ export default function NavBar() {
   const { totalItems } = useCart();
 
   return (
-    <nav
-      id="navbar"
-      className={`w-full h-[8ch] backdrop-blur-sm flex items-center justify-between lg:px-12 px-4 fixed top-0 transition-all ease-in-out duration-300 z-50 ${
-        isScrolled ? "bg-sky-50/30 border-sky-200" : "bg-white"
-      }`}
-    >
-      {/* Logo */}
-      <div className="flex items-center gap-2 md:pr-16 pr-0">
-        <Link
-          href="/"
-          className="text-lg font-semibold text-sky-700 flex items-center gap-x-2"
-        >
-          <BookOpen size={24} />
-          <span>Learnhub</span>
-        </Link>
-      </div>
+    <nav>
+      <div
+        id="navbar"
+        className={`w-full h-[8ch] backdrop-blur-sm flex items-center justify-between md:px-16 sm:px-10 px-4 top-0 transition-all ease-in-out duration-300 z-50 ${
+          isScrolled ? "bg-sky-50/30 border-sky-200" : "bg-[#0a1128]"
+        }`}
+      >
+        {/* Logo */}
+        <div className="flex items-center h-full ">
+          <div className="relative h-10 md:h-14 w-20 md:w-28">
+            <Link href="/" className="block h-full w-full">
+              <Image
+                src={Logo}
+                alt="Cabana Wear logo"
+                fill
+                className="object-contain p-1"
+              />
+            </Link>
+          </div>
+          <div className="hidden sm:flex flex-col justify-center leading-tight text-white">
+            <span className="text-sm tracking-wide font-fredoka font-bold">CABANA</span>
+            <span className="font-bold text-sm tracking-wide">WEAR</span>
+          </div>
+        </div>
 
-      {/* Hamburger button */}
-      <div className="md:hidden">
-        <button
-          ref={menuButtonRef}
-          onClick={toggleNavbar}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label="Open navigation menu"
-          className="text-neutral-600 focus:outline-none"
-        >
-          <Menu size={24} />
-        </button>
+        {/* Right-side controls (mobile: hamburger + cart, desktop: auth + cart) */}
+        <div className="flex items-center gap-4">
+          {/* Cart icon - always visible */}
+          <div className="relative">
+            <Link href="/cart" onClick={closeNavBar}>
+              <button>
+                <ShoppingCartIcon
+                  size={24}
+                  color="#fca311"
+                  weight="fill"
+                  mirrored={false}
+                  className="cursor-pointer"
+                />
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-sky-600 text-white text-xs font-semibold w-5 h-5 rounded-full flex items-center justify-center">
+                    {totalItems > 99 ? "99+" : totalItems}
+                  </span>
+                )}
+              </button>
+            </Link>
+          </div>
+
+          {/* Desktop-only auth buttons */}
+          <div className="hidden md:flex items-center gap-2">
+            {!loading &&
+              (user ? (
+                <div className="flex items-center gap-3">
+                  <button className="bg-white px-4 py-2 rounded-full">
+                    <UserIcon
+                      size={22}
+                      weight="duotone"
+                      className="text-sky-700 cursor-pointer"
+                    />
+                  </button>
+
+                  <button
+                    onClick={() => signOut()}
+                    className="w-fit px-6 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700 text-neutral-50 ease-in-out duration-300 cursor-pointer whitespace-nowrap"
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              ) : (
+                <Link href="/email-password">
+                  <button className="w-fit text-nowrap px-4 py-2 text-[#fca311] ease-in-out duration-300 cursor-pointer rounded-2xl border-2 border-[#fca311]">
+                    Sign In
+                  </button>
+                </Link>
+              ))}
+          </div>
+
+          {/* Hamburger button (mobile only) */}
+          <button
+            ref={menuButtonRef}
+            onClick={toggleNavbar}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label="Open navigation menu"
+            className="md:hidden text-neutral-100 focus:outline-none"
+          >
+            <Menu size={26} />
+          </button>
+        </div>
       </div>
 
       {/* -- Backdrop -- */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/30 z-40 md:hidden"
+          className="fixed inset-0 bg-black/40 z-40 md:hidden"
           onClick={closeNavBar}
           aria-hidden="true"
         />
@@ -111,90 +176,118 @@ export default function NavBar() {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className={`fixed md:static top-0 right-0 h-screen md:h-auto w-full md:w-auto bg-sky-50 border md:border-none border-neutral-300 md:bg-transparent shadow-lg md:shadow-none ease-in-out duration-300 transition-transform flex-1 ${
+        className={`fixed md:hidden top-0 right-0 h-screen w-[80%] max-w-[320px] bg-sky-50 shadow-2xl ease-in-out duration-300 transition-transform flex flex-col z-[60] ${
           open ? "translate-x-0" : "translate-x-full"
-        } md:translate-x-0 z-50`}
+        }`}
       >
         {/* Logo + close button inside drawer */}
-        <div className="w-full md:hidden flex items-center justify-between px-4">
-          <Link
-            href="/"
-            className="text-lg font-semibold text-sky-700 flex items-center gap-x-2"
-          >
-            <BookOpen size={24} />
-            <span>Learnhub</span>
-          </Link>
+       <div className="w-full flex items-center justify-between px-5 py-5 border-b border-neutral-200">
+  <Link
+    href="/"
+    onClick={closeNavBar}
+    className="text-lg font-semibold text-sky-700 flex items-center gap-x-2"
+  >
+    <div className="relative w-10 h-10">
+      <Image
+        src={Logo}
+        alt="Cabana Wear logo"
+        fill
+        className="object-contain p-1"
+      />
+    </div>
+    <span>Cabana</span>
+  </Link>
 
-          <div className="md:hidden flex justify-end py-6">
-            <button
-              ref={closeButtonRef}
-              onClick={closeNavBar}
-              aria-label="Close navigation menu"
-              className="focus:outline-none"
-            >
-              <X size={24} color="gray" />
-            </button>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="border-b border-neutral-300 md:hidden" />
-
-        {/* Nav items + buttons */}
-        <div className="flex-1 flex items-center flex-col md:flex-row justify-between gap-6 p-6 md:p-0">
-          <ul className="flex flex-col md:flex-row items-center md:gap-7 gap-4 md:text-base text-lg text-neutral-700 md:font-normal font-medium">
-            {navItems.map((item) => (
-              <li
-                key={item.name}
-                onClick={closeNavBar}
-                className={`hover:text-sky-700 text-sm lg:text-base md:text-nowrap ease-in-out duration-200 ${
-                  pathname === item.href ? "text-sky-700" : "text-neutral-600"
-                } cursor-pointer`}
-              >
-                <Link href={item.href}>{item.name}</Link>
-              </li>
-            ))}
-          </ul>
-
-          {/* Buttons */}
-          <div className="flex flex-col md:flex-row items-center p-4 gap-2">
-  {!loading && (
-    user ? (
-      <div className="flex items-center gap-3">
-        <button className="bg-white px-4"> <UserIcon size={28} weight="duotone" className="text-sky-700 cursor-pointer " /> </button>
-        
-        <button
-          onClick={() => signOut()}
-          className="w-fit px-6 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700 text-neutral-50 ease-in-out duration-300 cursor-pointer whitespace-nowrap"
-        >
-          Sign Out
-        </button>
-      </div>
-    ) : (
-      <Link href="/email-password">
-        <button className="w-fit md:text-nowrap px-6 py-2 md:text-sky-700 ease-in-out duration-300 cursor-pointer shrink-2">
-          Sign In
-        </button>
-      </Link>
-    )
-  )}
-
-  {/* Cart icon stays always visible */}
-  <div className="relative" onClick={closeNavBar}>
-    <Link href="/cart">
-      <button className="bg-white px-4">
-      <ShoppingCartIcon size={24} className="cursor-pointer" />
-      {totalItems > 0 && (
-        <span className="absolute -top-2 -right-2 bg-sky-600 text-white text-xs font-semibold w-5 h-5 rounded-full flex items-center justify-center">
-          {totalItems > 99 ? "99+" : totalItems}
-        </span>
-      )}
-      </button>
-    </Link>
-  </div>
+  <button
+    ref={closeButtonRef}
+    onClick={closeNavBar}
+    aria-label="Close navigation menu"
+    className="focus:outline-none"
+  >
+    <X size={22} className="text-neutral-500" />
+  </button>
 </div>
+
+        {/* Nav items */}
+        <ul className="flex flex-col gap-1 px-3 py-4">
+          {navItems.map((item) => (
+            <li key={item.name} onClick={closeNavBar}>
+              <Link
+                href={item.href}
+                className={`block px-3 py-3 rounded-lg text-base font-medium ease-in-out duration-200 ${
+                  pathname === item.href
+                    ? "text-sky-700 bg-sky-100"
+                    : "text-neutral-700 hover:bg-sky-100/60"
+                }`}
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Auth section pinned to bottom of drawer */}
+        <div className="mt-auto px-5 py-6 border-t border-neutral-200">
+          {!loading &&
+            (user ? (
+              <div className="flex items-center gap-3">
+                <button className="bg-white p-2 rounded-full border border-neutral-200">
+                  <UserIcon
+                    size={22}
+                    weight="duotone"
+                    className="text-sky-700"
+                  />
+                </button>
+                <button
+                  onClick={() => {
+                    signOut();
+                    closeNavBar();
+                  }}
+                  className="flex-1 px-4 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700 text-neutral-50 ease-in-out duration-300 cursor-pointer"
+                >
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <Link href="/email-password" onClick={closeNavBar}>
+                <button className="w-full px-4 py-2 text-[#fca311] ease-in-out duration-300 cursor-pointer rounded-2xl border-2 border-[#fca311]">
+                  Sign In
+                </button>
+              </Link>
+            ))}
         </div>
       </div>
+
+      {/* Desktop floating pill nav (md and up only) */}
+      <div className="hidden md:flex fixed top-4 left-1/2 -translate-x-1/2 z-50 flex-row items-center w-fit gap-6">
+        <ul className="flex-1 flex flex-row items-center justify-center gap-4 text-[14px] text-neutral-700 bg-sky-50/50 backdrop-blur-2xl font-inter rounded-full px-4 py-2">
+          {navItems.map((item) => (
+            <li
+              key={item.name}
+              onClick={closeNavBar}
+              className={`hover:text-[#fca311] text-sm lg:text-base text-nowrap ease-in-out duration-200 ${
+                pathname === item.href ? "text-[#fca311]" : "text-neutral-600"
+              } cursor-pointer`}
+            >
+              <Link href={item.href}>{item.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Scroll-to-top button */}
+      <Button
+        onClick={scrollToTop}
+        size="icon"
+        aria-label="Scroll to top"
+        className={`fixed bottom-6 right-6 z-50 rounded-full h-11 w-11 shadow-lg bg-[#0a1128] hover:bg-[#0a1128]/90 text-white transition-all duration-300 ${
+          showScrollTop
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 translate-y-4 pointer-events-none"
+        }`}
+      >
+        <ArrowUp size={20} />
+      </Button>
     </nav>
   );
 }

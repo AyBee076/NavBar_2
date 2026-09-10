@@ -8,7 +8,7 @@ export default function ModelsLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className="relative flex flex-col min-h-screen md:flex-row">
+    <div className="relative flex flex-col min-h-screen md:flex-row bg-[#dfd7c9]">
       <Suspense fallback={<div>Loading filters...</div>}>
         <Sidebar />
       </Suspense>
