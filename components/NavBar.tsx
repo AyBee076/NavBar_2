@@ -4,7 +4,7 @@ import { navItems } from "@/lib/constants";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ArrowUp, BookOpen, Menu, X } from "lucide-react";
+import { ArrowUp, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { ShoppingCartIcon } from "@phosphor-icons/react";
 import { UserIcon } from "@phosphor-icons/react";
@@ -74,8 +74,8 @@ export default function NavBar() {
     <nav>
       <div
         id="navbar"
-        className={`w-full h-[8ch] backdrop-blur-sm flex items-center justify-between md:px-16 sm:px-10 px-4 top-0 transition-all ease-in-out duration-300 z-50 ${
-          isScrolled ? "bg-sky-50/30 border-sky-200" : "bg-[#0a1128]"
+        className={`w-full h-[8ch] backdrop-blur-sm flex items-center justify-between md:px-10 sm:px-10 px-4 p-9 top-0 transition-all ease-in-out duration-300 z-50 ${
+          isScrolled ? "bg-sky-50/30 border-sky-200" : "bg-nav-bg"
         }`}
       >
         {/* Logo */}
@@ -91,7 +91,9 @@ export default function NavBar() {
             </Link>
           </div>
           <div className="hidden sm:flex flex-col justify-center leading-tight text-white">
-            <span className="text-sm tracking-wide font-fredoka font-bold">CABANA</span>
+            <span className="text-sm tracking-wide font-fredoka font-bold">
+              CABANA
+            </span>
             <span className="font-bold text-sm tracking-wide">WEAR</span>
           </div>
         </div>
@@ -140,7 +142,7 @@ export default function NavBar() {
                 </div>
               ) : (
                 <Link href="/email-password">
-                  <button className="w-fit text-nowrap px-4 py-2 text-[#fca311] ease-in-out duration-300 cursor-pointer rounded-2xl border-2 border-[#fca311]">
+                  <button className="w-fit text-nowrap px-4 py-2 text-nav-text ease-in-out duration-300 cursor-pointer rounded-2xl border-2 border-nav-text font-grotesque">
                     Sign In
                   </button>
                 </Link>
@@ -176,84 +178,84 @@ export default function NavBar() {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className={`fixed md:hidden top-0 right-0 h-screen w-[80%] max-w-[320px] bg-sky-50 shadow-2xl ease-in-out duration-300 transition-transform flex flex-col z-[60] ${
+        className={`fixed md:hidden top-0 right-0 h-screen w-[80%] max-w-[320px] bg-sidebar-mobile text-sidebar-mobile-links font-grotesque shadow-2xl ease-in-out duration-300 transition-transform flex flex-col z-[60] ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* Logo + close button inside drawer */}
-       <div className="w-full flex items-center justify-between px-5 py-5 border-b border-neutral-200">
-  <Link
-    href="/"
-    onClick={closeNavBar}
-    className="text-lg font-semibold text-sky-700 flex items-center gap-x-2"
-  >
-    <div className="relative w-10 h-10">
-      <Image
-        src={Logo}
-        alt="Cabana Wear logo"
-        fill
-        className="object-contain p-1"
-      />
-    </div>
-    <span>Cabana</span>
-  </Link>
-
-  <button
-    ref={closeButtonRef}
-    onClick={closeNavBar}
-    aria-label="Close navigation menu"
-    className="focus:outline-none"
-  >
-    <X size={22} className="text-neutral-500" />
-  </button>
-</div>
-
-        {/* Nav items */}
-        <ul className="flex flex-col gap-1 px-3 py-4">
-          {navItems.map((item) => (
-            <li key={item.name} onClick={closeNavBar}>
-              <Link
-                href={item.href}
-                className={`block px-3 py-3 rounded-lg text-base font-medium ease-in-out duration-200 ${
-                  pathname === item.href
-                    ? "text-sky-700 bg-sky-100"
-                    : "text-neutral-700 hover:bg-sky-100/60"
-                }`}
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* Auth section pinned to bottom of drawer */}
-        <div className="mt-auto px-5 py-6 border-t border-neutral-200">
-          {!loading &&
-            (user ? (
-              <div className="flex items-center gap-3">
-                <button className="bg-white p-2 rounded-full border border-neutral-200">
-                  <UserIcon
-                    size={22}
-                    weight="duotone"
-                    className="text-sky-700"
-                  />
-                </button>
-                <button
-                  onClick={() => {
-                    signOut();
-                    closeNavBar();
-                  }}
-                  className="flex-1 px-4 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700 text-neutral-50 ease-in-out duration-300 cursor-pointer"
+              {/* Logo + close button inside drawer */}
+              <div className="w-full flex items-center justify-between px-5 py-5 border-b border-neutral-200">
+                <Link
+                  href="/"
+                  onClick={closeNavBar}
+                  className="text-lg font-semibold text-sky-700 flex items-center gap-x-2"
                 >
-                  Sign Out
+                  <div className="relative w-10 h-10 bg-[#001d3d] p-6 rounded-3xl">
+                    <Image
+                      src={Logo}
+                      alt="Cabana Wear logo"
+                      fill
+                      className="object-contain p-1"
+                    />
+                  </div>
+        
+                </Link>
+
+                <button
+                  ref={closeButtonRef}
+                  onClick={closeNavBar}
+                  aria-label="Close navigation menu"
+                  className="focus:outline-none"
+                >
+                  <X size={22} className="text-neutral-500" />
                 </button>
               </div>
-            ) : (
-              <Link href="/email-password" onClick={closeNavBar}>
-                <button className="w-full px-4 py-2 text-[#fca311] ease-in-out duration-300 cursor-pointer rounded-2xl border-2 border-[#fca311]">
-                  Sign In
-                </button>
-              </Link>
+
+              {/* Nav items */}
+              <ul className="flex flex-col gap-1 px-3 py-4">
+                {navItems.map((item) => (
+                  <li key={item.name} onClick={closeNavBar}>
+                    <Link
+                      href={item.href}
+                      className={`block px-3 py-3 rounded-lg text-base font-medium ease-in-out duration-200 ${
+                        pathname === item.href
+                          ? "text-nav-text-active "
+                          : "text-nav-bg hover:bg-[#E9C46A]"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Auth section pinned to bottom of drawer */}
+              <div className="mt-auto px-5 py-6 border-t border-neutral-200">
+                {!loading &&
+                  (user ? (
+                    <div className="flex items-center gap-3">
+                      <button className="bg-white p-2 rounded-full border border-neutral-200">
+                        <UserIcon
+                          size={22}
+                          weight="duotone"
+                          className="text-sky-700"
+                        />
+                      </button>
+                      <button
+                        onClick={() => {
+                          signOut();
+                          closeNavBar();
+                        }}
+                        className="flex-1 px-4 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700 text-neutral-50 ease-in-out duration-300 cursor-pointer"
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  ) : (
+                    <Link href="/email-password" onClick={closeNavBar}>
+                      <button className="w-full px-4 py-2 text-[#001d3d] hover:bg-[#fca311] hover:border-none ease-in-out duration-300 cursor-pointer rounded-2xl border-2 border-[#001d3d]">
+                        Sign In
+                      </button>
+                    </Link>
             ))}
         </div>
       </div>

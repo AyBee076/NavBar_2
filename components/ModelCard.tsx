@@ -6,16 +6,32 @@ import { Button } from "@/components/ui/button";
 import { ModelCardProps } from "@/types";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
-import { useState } from "react";
-import { motion, easeOut } from "framer-motion";
-
-const MotionButton = motion(Button);
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 export default function ModelCard({ model, section = "men" }: ModelCardProps) {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
   const { addToCart } = useCart();
 
   const outOfStock = model.stock < 1;
+
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Smooth out the raw scroll progress so it doesn't feel jittery
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 300,
+    damping: 40,
+    restDelta: 0.001,
+  });
+
+  const y = useTransform(smoothProgress, [0, 0.5, 1], [80, 0, -80]);
+  const scale = useTransform(smoothProgress, [0, 0.5, 1], [0.92, 1, 0.92]);
+  // const opacity = useTransform(smoothProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
 
   const toggleSize = (e: React.MouseEvent, size: string) => {
     e.preventDefault();
@@ -43,11 +59,8 @@ export default function ModelCard({ model, section = "men" }: ModelCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ amount: 0.2, once: true }}
-      transition={{ duration: 0.5, ease: easeOut }}
-      whileHover={outOfStock ? undefined : { y: -4 }}
+      ref={cardRef}
+      style={{ y, scale }}
       className={`block group transition-shadow ${
         outOfStock
           ? "opacity-90 cursor-not-allowed"
@@ -61,11 +74,7 @@ export default function ModelCard({ model, section = "men" }: ModelCardProps) {
       >
         <div className="relative aspect-square overflow-hidden">
           <Link href={`/${section}/${model.id}`}>
-            <motion.div
-              whileHover={outOfStock ? undefined : { scale: 1.06 }}
-              transition={{ duration: 0.4, ease: easeOut }}
-              className="relative w-full h-full"
-            >
+            <div className="relative w-full h-full">
               <Image
                 src={model.images[0]}
                 alt={model.name}
@@ -73,17 +82,17 @@ export default function ModelCard({ model, section = "men" }: ModelCardProps) {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className={`object-cover ${outOfStock ? "grayscale" : ""}`}
               />
-            </motion.div>
+            </div>
           </Link>
         </div>
-        <div className="p-4">
+        <div className="p-4 font-fredoka flex flex-col ">
           <div className="flex flex-col justify-between mb-2 min-h-[3.5rem]">
-            <span id={`model-${model.id}-title`} className="text-sm">
+            <span id={`model-${model.id}-title`} className="text-sm text-left">
               {model.category}
             </span>
             <h2
               id={`model-${model.id}-title`}
-              className="text-base font-semibold text-gray-800 line-clamp-2"
+              className="text-xl font-semibold text-gray-800 line-clamp-2 text-left"
             >
               {model.name}
             </h2>
@@ -113,38 +122,30 @@ export default function ModelCard({ model, section = "men" }: ModelCardProps) {
 
           <div className="mt-2 flex flex-wrap gap-2">
             {model.size.map((item) => (
-              <MotionButton
+              <Button
                 variant="outline"
                 key={item}
-                whileTap={outOfStock ? undefined : { scale: 0.9 }}
-                animate={
-                  selectedSizes.includes(item) ? { scale: 1.05 } : { scale: 1 }
-                }
-                transition={{ duration: 0.15, ease: easeOut }}
                 onClick={(e: React.MouseEvent) => toggleSize(e, item)}
                 disabled={outOfStock}
                 className={
                   selectedSizes.includes(item)
-                    ? "bg-sky-600 text-white"
-                    : "bg-gray-300"
+                    ? "bg-card-size-btn text-white"
+                    : "bg-card-btn text-card-size-text "
                 }
               >
                 {item}
-              </MotionButton>
+              </Button>
             ))}
           </div>
 
           <div className="mt-5">
-            <MotionButton
-              className="w-full"
-              whileHover={outOfStock ? undefined : { scale: 1.02 }}
-              whileTap={outOfStock ? undefined : { scale: 0.96 }}
-              transition={{ duration: 0.15, ease: easeOut }}
+            <Button
+              className="w-full bg-card-btn"
               onClick={handleAddToCart}
               disabled={outOfStock}
             >
               Add to Cart <ShoppingCartIcon size={32} />
-            </MotionButton>
+            </Button>
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ export default function ProductPage({ model }: ModelCardProps) {
 
   const toggleSize = (size: string) => {
     setSelectedSizes((prev) =>
-      prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
+      prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size],
     );
   };
 
@@ -42,11 +42,11 @@ export default function ProductPage({ model }: ModelCardProps) {
   };
 
   return (
-    <div>
+    <div className="bg-homepage-bg">
       {/* IMAGE AND ADD TO BAG */}
-      <div className="flex gap-5 p-10">
+      <div className="flex gap-5 p-10 flex-col md:flex-row">
         {/* IMAGE */}
-        <div className="w-1/2 px-5">
+        <div className="md:w-1/2 px-5">
           <Carousel
             className="w-full"
             opts={{
@@ -76,20 +76,14 @@ export default function ProductPage({ model }: ModelCardProps) {
         </div>
 
         {/* DETAILS */}
-        <div className="w-1/2 flex flex-col px-5 md:px-8">
-          <h1 className="text-lg md:text-4xl">{model.name}</h1>
-          <h3 className="mt-4 text-2xl">{model.category}</h3>
+        <div className="md:w-1/2 flex flex-col px-5 md:px-8 text-nav-bg">
+          <h1 className="text-lg md:text-5xl font-chubbo font-bold">{model.name}</h1>
+          <h3 className="mt-4 text-3xl font-aime font-bold">{model.category}</h3>
           <h3 className="mt-4 text-2xl">{`GH₵ ${model.price}`}</h3>
-
-          {/* COLOR CHOICE */}
-          <div className="flex gap-2 mt-4">
-            <Button className="w-10 h-10 bg-amber-300" />
-            <Button className="w-10 h-10 bg-green-800" />
-          </div>
 
           {/* SIZES */}
           <div className="mt-4">
-            <h3>SELECT SIZE</h3>
+            <h3 className="font-recia font-regular">SELECT SIZE</h3>
             <div className="mt-2 flex gap-2 flex-wrap">
               {model.size.map((item) => (
                 <Button
@@ -108,7 +102,7 @@ export default function ProductPage({ model }: ModelCardProps) {
               ))}
             </div>
             {selectedSizes.length === 0 && (
-              <p className="text-xs text-red-400 mt-1">Please select a size</p>
+              <p className="text-xs text-red-400 mt-1 font">Please select a size</p>
             )}
           </div>
 
@@ -151,48 +145,69 @@ export default function ProductPage({ model }: ModelCardProps) {
 
           {/* ADD TO BAG AND WISH LIST */}
           <div className="flex flex-col gap-2 mt-4 lg:mt-27">
-            <Button
-              size="lg"
-              className="bg-gray-900"
-              onClick={handleAddToBag}
-              disabled={selectedSizes.length === 0 || model.stock === 0}
-            >
-              ADD TO BAG
-            </Button>
-            <Button size="lg" variant="outline" className="bg-gray-300">
-              <HeartIcon size={32} color="pink" />
-              ADD TO WISH LIST
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-3 w-full">
+              <Button
+                size="lg"
+                className="bg-gray-900 w-full sm:flex-1 p-2 whitespace-nowrap text-sm sm:text-base"
+                onClick={handleAddToBag}
+                disabled={selectedSizes.length === 0 || model.stock === 0}
+              >
+                ADD TO BAG
+              </Button>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-gray-300 w-full sm:flex-1 p-2 whitespace-nowrap text-sm md:text-base"
+              >
+                <HeartIcon size={22} className="text-pink-500 mr-2 shrink-0" />
+                ADD TO WISH LIST
+              </Button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="px-5">
+      <div className="px-4 sm:px-6 lg:px-5">
         {/* PRODUCT DESCRIPTION */}
-        <div className="flex gap-5 mt-10 justify-between border-t pt-6">
-          <div className="flex-1 border-r pr-6">
-            <h1 className="font-semibold mb-2">DESCRIPTION</h1>
-            <p className="text-gray-600 text-sm">{model.description}</p>
-          </div>
-          <div className="flex-1 border-r pr-6">
-            <h1 className="font-semibold mb-2">FIT AND FEATURES</h1>
-            <p className="text-gray-600 text-sm">{model.fit}</p>
-          </div>
-          <div className="flex-1">
-            <h1 className="font-semibold mb-2">FABRIC AND CARE</h1>
-            <p className="text-gray-600 text-sm">{model.fabric}</p>
-          </div>
+        <div className="mt-8 md:mt-10 border-t pt-6 grid grid-cols-1 md:grid-cols-3">
+          {[
+            { title: "DESCRIPTION", text: model.description },
+            { title: "FIT AND FEATURES", text: model.fit },
+            { title: "FABRIC AND CARE", text: model.fabric },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="
+          py-4 first:pt-0 last:pb-0 border-b last:border-b-0
+          md:border-b-0 md:border-r md:last:border-r-0
+          md:py-0 md:px-4 lg:px-6
+          md:first:pl-0 md:last:pr-0
+        "
+            >
+              <h1 className="font-semibold mb-2 text-sm md:text-base">
+                {item.title}
+              </h1>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {item.text}
+              </p>
+            </div>
+          ))}
         </div>
 
         {/* YOU MIGHT ALSO LIKE */}
-        <div className="mt-10">
-          <h2 className="text-2xl font-semibold mb-4">You Might Also Like</h2>
+        <div className="mt-8 md:mt-10">
+          <h2 className="text-xl sm:text-2xl font-semibold mb-4">
+            You Might Also Like
+          </h2>
         </div>
 
         {/* REVIEWS */}
-        <div className="mt-10 border-t pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Customer Reviews</h2>
-          <div className="flex items-center gap-2 mb-4">
+        <div className="mt-8 md:mt-10 border-t pt-6">
+          <h2 className="text-xl sm:text-2xl font-semibold mb-4">
+            Customer Reviews
+          </h2>
+          <div className="flex flex-wrap items-center gap-2 mb-4">
             <span className="text-yellow-400">★★★★☆</span>
             <span className="text-gray-500 text-sm">4.0 out of 5</span>
           </div>

@@ -8,6 +8,21 @@ import { CartProvider } from "@/context/CartContext";
 import localFont from "next/font/local";
 
 
+const chubbo = localFont({
+  src: "../fonts/Chubbo-Bold.ttf",
+  variable: "--font-mashle",
+});
+
+const erode = localFont({
+  src: "../fonts/Erode-Variable.ttf",
+  variable: "--font-mashle",
+});
+
+const recia = localFont({
+  src: "../fonts/Recia-Regular.ttf",
+  variable: "--font-mashle",
+});
+
 const mashle = localFont({
   src: "../fonts/Mashle-BF6aa001f87bb28.ttf",
   variable: "--font-mashle",
@@ -15,7 +30,7 @@ const mashle = localFont({
 
 const fredoka = localFont({
   src: "../fonts/Fredoka-VariableFont_wdth,wght.ttf",
-  variable: "--font-grotesque",
+  variable: "--font-fredoka",
   weight: "200 800",
 });
 
@@ -27,24 +42,11 @@ const grotesque = localFont({
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
-const aime = localFont({
-  src: "../fonts/Aimee-BF6847e2e52c33a.ttf",
-  variable: "--font-aime",
-});
-const schabo = localFont({
-  src: "../fonts/schabo-condensed.otf",
-  variable: "--font-schabo-condensed",
-});
-
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const oswald = Oswald({
-  variable: "--font-oswald",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Cabana Wear",
@@ -62,13 +64,14 @@ export default function RootLayout({
         className={cn(
           "min-h-full flex flex-col",
           geist.variable,
-          aime.variable,
           inter.variable,
-          schabo.variable,
           mashle.variable,
           fredoka.variable,
           grotesque.variable,
-          oswald.variable
+          recia.variable,
+          erode.variable,
+          chubbo.variable,
+
         )}
       >
         <CartProvider>
